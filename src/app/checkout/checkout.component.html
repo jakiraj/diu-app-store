@@ -1,0 +1,45 @@
+<!-- <pre>{{checkoutForm.value | json}}</pre> -->
+<form [formGroup]="checkoutForm">
+    <div>
+        <label for="clientName">
+            Name
+        </label>
+        <input id="clientName" type="text" formControlName="clientName">
+    </div>
+
+    <div>
+        <label for="clientEmail">
+            Email
+        </label>
+        <input id="clientEmail" type="text" formControlName="clientEmail">
+    </div>
+
+    <div>
+        <label for="clientMobile">
+            Mobile
+        </label>
+        <input id="clientMobile" type="text" formControlName="clientMobile">
+    </div>
+
+    <div>
+        <label for="shippingCharge">
+            Shipping Charge
+        </label>
+        <input id="shippingCharge" type="text" formControlName="shippingCharge">
+    </div>
+</form>
+<!-- <pre>{{cartList| json}}</pre> -->
+<div class="row product-wrapper">
+    <div class="col-sm-6 col-md-4 col-lg-3 product-item" *ngFor="let product of cartList">
+        <div class="thumbnail">
+            <img [src]="product.image" alt="{{ product.productName }}"></div>
+        <div class="caption">
+            <h3>{{product.productName}}</h3>
+            <p>Order Quantity {{product.qty}}</p>
+            <p>Unit Price {{product.salesPrice | currency}}</p>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <button (click)="checkoutService.save(checkoutForm)" routerLink="/dashboard/congrats">Confirm Order</button>
+</div>
